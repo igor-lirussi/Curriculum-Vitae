@@ -89,8 +89,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: ${{ echo `date +%F` }}
-          release_name: Release ${{ echo `date +%F` }}
+          tag_name: echo "$(echo `date +%F`)"
+          release_name: echo 'Release $( echo `date +%F` )'
           draft: false
           prerelease: false
       - name: Download Artifacts
