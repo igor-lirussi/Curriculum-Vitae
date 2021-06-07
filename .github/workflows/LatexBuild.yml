@@ -1,0 +1,134 @@
+name: LateX Build
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - '**'
+  workflow_dispatch:
+jobs:
+  BuildLatexJob:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Setup Git repo
+        uses: actions/checkout@v2
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          name: cv #document name
+          root_file: main.tex
+          pre_compile: "tlmgr update --self --all"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          post_compile: "latexmk -c"
+      - name: Compile LaTeX document-ita 
+        uses: xu-cheng/latex-action@v2
+        with:
+          name: cv-ita #document name
+          root_file: main-ita.tex
+          pre_compile: "tlmgr update --self --all"
+          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          post_compile: "latexmk -c"
+      - name: Split log
+        if: failure()
+        shell: bash
+        run: cat main.log | grep -n -E 'LaTeX Error|LaTeX Warning|Undefined' > small.log
+      - name: Upload Logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Logs
+          path: |
+            main.log
+            small.log 
+      - name: Print small log
+        if: failure()
+        shell: bash
+        run: cat small.log >&2
+      - name: Upload Artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Artifacts
+          path: |
+            cv.pdf
+            cv-ita.pdf
+          
+  TelegramJobFailure:
+      needs: [BuildLatexJob] #when finished this job
+      if: failure() # if its failed
+      runs-on: ubuntu-20.04
+      steps:
+      - name: Clone Repo with Checkout 
+        uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Logs
+      - name: Send custom Telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+              ${{ github.event_name }} event,
+              on github.com/${{ github.repository }}, 
+              by ${{ github.actor }}.
+              /!\ FAILED /!\
+          disable_web_page_preview: true
+          document: small.log
+          
+  
+  DeployJob:
+    needs: BuildLatexJob
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Clone Repo with Checkout 
+        uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
+      - name: Create relese 
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          tag_name: ${{ $(echo `date +%F`) }}
+          release_name: Release ${{ $(echo `date +%F`) }}
+          draft: false
+          prerelease: false
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Artifacts
+      - name: Upload Release Asset
+        if: success()
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./cv.pdf
+          asset_name: cv.pdf
+          asset_content_type: Relese pdf
+
+
+  TelegramJobDeploy:
+      needs: [DeployJob] #when finished this job
+      if: success() # if its failed
+      runs-on: ubuntu-20.04
+      steps:
+      - name: Clone Repo with Checkout # first step
+        uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Artifacts
+      - name: Send custom Telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+              RELEASE, with commit ${{github.event.head_commit.message}}
+              on github.com/${{ github.repository }}.
+          disable_web_page_preview: true
+          #document: cv.pdf
+          
+ 
