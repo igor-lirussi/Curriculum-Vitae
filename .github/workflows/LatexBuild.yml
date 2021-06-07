@@ -15,14 +15,14 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
-          pre_compile: "tlmgr update --self --all"
+          #pre_compile: "tlmgr update --self --all"
           args: "-pdf -jobname=cv -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
       - name: Compile LaTeX document-ita 
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main-ita.tex
-          pre_compile: "tlmgr update --self --all"
+          #pre_compile: "tlmgr update --self --all"
           args: "-pdf -jobname=cv-ita -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
       - name: Split log
@@ -82,30 +82,39 @@ jobs:
     steps:
       - name: Clone Repo with Checkout 
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Artifacts
+      - name: Extract Date
+        shell: bash
+        id: extract_date
+        run: |
+          echo "::set-output name=DATE::Release-$(date +%F_%H-%M)"
+      - name: Print Output Step
+        run: echo ${{ steps.extract_date.outputs.DATE }}
       - name: Create relese 
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
-          tag_name: echo "$(echo `date +%F`)"
-          release_name: echo 'Release $( echo `date +%F` )'
+          tag_name: ${{ steps.extract_date.outputs.DATE }}
+          release_name: ${{ steps.extract_date.outputs.DATE }}
           draft: false
           prerelease: false
-      - name: Download Artifacts
-        uses: actions/download-artifact@v2
-        with:
-          name: Artifacts
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          hub release create -m "$(echo 'Release $(echo `date +%F`)')" || true
+          TAG=${{ steps.extract_date.outputs.DATE }}
+          echo $TAG
+          hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
           while IFS= read -r file; do
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
             gh release upload "$TAG" "$pdf" --clobber
-          done <"success-list"
+          done 
 
 
   TelegramJobDeploy:
