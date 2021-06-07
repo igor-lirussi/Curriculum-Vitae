@@ -14,18 +14,16 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          name: cv #document name
           root_file: main.tex
           pre_compile: "tlmgr update --self --all"
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          args: "-pdf -jobname=cv -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
       - name: Compile LaTeX document-ita 
         uses: xu-cheng/latex-action@v2
         with:
-          name: cv-ita #document name
           root_file: main-ita.tex
           pre_compile: "tlmgr update --self --all"
-          args: "-pdf -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          args: "-pdf -jobname=cv-ita -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
       - name: Split log
         if: failure()
@@ -51,6 +49,7 @@ jobs:
           path: |
             cv.pdf
             cv-ita.pdf
+      
           
   TelegramJobFailure:
       needs: [BuildLatexJob] #when finished this job
@@ -97,16 +96,16 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: Artifacts
-      - name: Upload Release Asset
-        if: success()
-        uses: actions/upload-release-asset@v1
+      - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cv.pdf
-          asset_name: cv.pdf
-          asset_content_type: Relese pdf
+        run: |
+          hub release create -m "$(echo 'Release $(echo `date +%F`)')" || true
+          while IFS= read -r file; do
+            pdf="${file%.*}.pdf"
+            echo "Delivering file $pdf"
+            gh release upload "$TAG" "$pdf" --clobber
+          done <"success-list"
 
 
   TelegramJobDeploy:
