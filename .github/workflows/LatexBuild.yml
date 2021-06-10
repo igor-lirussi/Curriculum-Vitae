@@ -11,19 +11,19 @@ jobs:
     steps:
       - name: Setup Git repo
         uses: actions/checkout@v2
-      - name: Compile LaTeX document
+      - name: Compile LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
           #pre_compile: "tlmgr update --self --all"
-          args: "-pdf -jobname=cv -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          args: "-pdf -jobname=Lirussi-Igor-CV -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
-      - name: Compile LaTeX document-ita 
+      - name: Compile LaTeX Document-ita 
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main-ita.tex
           #pre_compile: "tlmgr update --self --all"
-          args: "-pdf -jobname=cv-ita -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          args: "-pdf -jobname=Lirussi-Igor-CV-Ita -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
           post_compile: "latexmk -c"
       - name: Split log
         if: failure()
@@ -47,8 +47,8 @@ jobs:
         with:
           name: Artifacts
           path: |
-            cv.pdf
-            cv-ita.pdf
+            Lirussi-Igor-CV.pdf
+            Lirussi-Igor-CV-Ita.pdf
       
           
   TelegramJobFailure:
@@ -108,8 +108,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG=${{ steps.extract_date.outputs.DATE }}
+          MSG=${{ github.event.head_commit.message }}
           echo $TAG
-          hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true
+          git tag -m "$MSG" "$TAG"  #crea tag con messaggio e tag
+          hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true #crea release con messaggio uguale al messaggio del tag (dovrebbe essere uguale a MSG)
           while IFS= read -r file; do
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
@@ -134,9 +136,10 @@ jobs:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-              RELEASE, with commit ${{github.event.head_commit.message}}
-              on github.com/${{ github.repository }}.
+              RELEASE,
+              on github.com/${{ github.repository }}
+              commit: ${{github.event.head_commit.message}}
           disable_web_page_preview: true
-          #document: cv.pdf
+          document: Lirussi-Igor-CV.pdf
           
  
