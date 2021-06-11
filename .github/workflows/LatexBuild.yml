@@ -103,6 +103,10 @@ jobs:
           MSG="${{ github.event.head_commit.message }}"
           echo $TAG
           hub release create -m "$MSG" "$TAG" || true #crea release con messaggio uguale a MSG)
+          pwd
+          tree
+          cd /home/runner/work/Curriculum-Vitae/Curriculum-Vitae
+          pwd
           while IFS= read -r file; do
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
