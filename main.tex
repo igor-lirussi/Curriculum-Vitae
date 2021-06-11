@@ -1,26 +1,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
-% IST-PORTFOLIO-Detailed Proof of Activity Execution Report Template
-% Based on a template from http://www.howtotex.com/
-% v1.0 - 5 December 2017
-\documentclass[paper=a4,fontsize=11pt]{temp} % KOMA-article class
+
+\documentclass[paper=a4,fontsize=11pt, hidelinks]{temp} % KOMA-article class
 \usepackage[english]{babel}
 \usepackage{hyperref}
-% page counting, header/footer
+
+% for header/footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \fancyhead[C]{}
-\cfoot{In compliance with the Italian Legislative Decree n. 196 dated 30/06/2003, I hereby authorize to use and process my personal details contained in this document.
-Version updated on \today . 
-\newline
-\thepage
+\cfoot{ %footer
+    In compliance with the Italian Legislative Decree n.196 dated 30/06/2003, I hereby authorize to use and process my personal details contained in this document.
+    Version updated on \today . 
+    \newline
+    \thepage %page number
 }
 
 \usepackage{lipsum}% provides filler text
-%        1         2         3         4         5         6         7         8
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -33,9 +31,8 @@ Version updated on \today .
    \sepspace
    \noindent
    % info 
-   \hfill igor.lirussi@studio.unibo.it | +39 3317055048 | Date of birth 25/12/1995
-   
-   \hfill Gender: Male | Nationality: Italian | Marital Status: Single
+   \hfill Gender: M | Nationality: Italian | Birth: 25/12/1995| Marital Status: Single
+   \hfill igor.lirussi@studio.unibo.it | +39 3317055048 | GitHub/LinkedIn: igor-lirussi | Skype: igor.lirussi
    
    \hfill via VI Maggio, 24, 33030, Forgaria nel Friuli (UD), Italy
  
@@ -46,7 +43,8 @@ Version updated on \today .
 \NewPart{Work Experience}{}
 \noindent
 
-\shortEntry{RESEARCH ASSISTANT - ROBOTICS}{Apr 2020 - Sep 2020}
+\shortEntry{RESEARCH ASSISTANT - ROBOTICS}
+{Apr 2020 - Sep 2020}
 {Stockholm (SE) \href{https://www.kth.se/is/rpl}{KTH Royal Institute of Technology: Robotic Perception and Learning Department}}
 {
  \begin{itemize}
@@ -57,7 +55,8 @@ Version updated on \today .
 
 \sepspace
 
-\shortEntry{RESEARCH SCHOLAR - COMPUTER VISION}{Sep 2018 - Sep 2019 }
+\shortEntry{RESEARCH SCHOLAR - COMPUTER VISION}
+{Sep 2018 - Sep 2019 }
 {Lisbon (PT) \href{https://welcome.isr.tecnico.ulisboa.pt/}{ I.S.R. Institute for Systems and Robotics - VisLab}}
 {
  \begin{itemize}
@@ -74,7 +73,7 @@ Version updated on \today .
 {Sep 2019 - Today}
 {University of Bologna}
 {Distributed Systems, Machine Learning,    Languages, Compilers and Computational Models,    Information Systems,     Concurrent and Distributed Programming,    Programming and Development paradigms,    Web Services and Applications,     Smart City and Mobile Technologies,     Agile, Continuous Integration and Delivery,  } 
- {IMG/unibo}
+{IMG/unibo}
 
 \sepspace
 
@@ -115,11 +114,11 @@ Version updated on \today .
 %
 \begin{minipage}[t]{0.66\textwidth} 
 \begin{tabular}[t]{l l}
-Theoretical and Practical course of First Aid for companies.\\
-Cinema course with Italian director Alessandro Quadretti.\\
+Theoretical and Practical course of First Aid for companies\\
+Cinema course with Italian director Alessandro Quadretti\\
 Great cook and Sport enthusiast\\
-Food Aid Programme Volunteer.\\
-Blood donor.\\
+Food Aid Program Volunteer\\
+Blood donor\\
 %\software{IMG/soft/writeL}  	 & Latex Writing\\
 %\software{IMG/soft/office} 		 & This software experience. fillertext fillertext fillertex\\
 %\software{IMG/soft/Matlab}  	 & This software experience. fillertext fillertext fillertex\\
