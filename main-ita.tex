@@ -1,24 +1,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \documentclass[paper=a4,fontsize=11pt]{temp} % KOMA-article class
 \usepackage[english]{babel}
 \usepackage{hyperref}
 % pers date
 \def\mydate{\leavevmode\hbox{\the\year-\twodigits\month-\twodigits\day}}
 \def\twodigits#1{\ifnum#1<10 0\fi\the#1}
-% page counting, header/footer
+
+% per header/footer
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}
 \fancyhead[C]{}
-\cfoot{In accordo con il Decreto Legislativo n. 196 datato 30/06/2003, Autorizzo all'uso e al processamento dei miei dati personali contenuti in questo documento.
-Versione aggiornata al \mydate. 
-\newline
-\thepage
+\cfoot{
+    In accordo con il Decreto Legislativo n. 196 datato 30/06/2003, Autorizzo all'uso e al processamento dei miei dati personali contenuti in questo documento.
+    Versione aggiornata al \mydate. 
+    \newline
+    \thepage
 }
 
 \usepackage{lipsum}% provides filler text
-%        1         2         3         4         5         6         7         8
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -31,17 +36,21 @@ Versione aggiornata al \mydate.
    \sepspace
    \noindent
    % info 
-   \hfill igor.lirussi@studio.unibo.it | +39 3317055048 | Data di Nascita 25/12/1995
+  \hfill Genere: M | Nazionalità: Italiana | Stato Civile: Single | Nascita: 25/12/1995
+  
+  \hfill igor.lirussi@studio.unibo.it | +39 3317055048 | Skype: igor.lirussi
    
-   \hfill Genere: Maschio | Nazionalità: Italiana | Stato Civile: Single
+
    
    \hfill via VI Maggio, 24, 33030, Forgaria nel Friuli (UD), Italy
  
+
 \end{minipage}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\NewPart{Experienza Lavorativa}{}
+\NewPart{Esperienza Lavorativa}{}
+
 \noindent
 
 \shortEntry{RESEARCH ASSISTANT - ROBOTICA}{Apr 2020 - Sep 2020}
@@ -113,7 +122,8 @@ Versione aggiornata al \mydate.
 %
 \begin{minipage}[t]{0.66\textwidth} 
 \begin{tabular}[t]{l l}
-Corso per aziende terorico e pratico di primo soccorso.\\
+Corso per aziende teorico e pratico di primo soccorso.\\
+
 Corso di cinema con regista Alessandro Quadretti.\\
 Cuoco e sportivo\\
 Volontario al Banco Alimentare.\\

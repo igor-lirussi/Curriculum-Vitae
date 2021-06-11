@@ -49,7 +49,7 @@ jobs:
           path: |
             Lirussi-Igor-CV.pdf
             Lirussi-Igor-CV-Ita.pdf
-      
+
           
   TelegramJobFailure:
       needs: [BuildLatexJob] #when finished this job
@@ -119,7 +119,6 @@ jobs:
             echo "Delivering file $pdf"
             gh release upload "$TAG" "$pdf" --clobber
           done 
-
 
   TelegramJobDeploy:
       needs: [DeployJob] #when finished this job
