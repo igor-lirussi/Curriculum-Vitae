@@ -93,16 +93,6 @@ jobs:
           echo "::set-output name=DATE::Release-$(date +%F_%H-%M)"
       - name: Print Output Step
         run: echo ${{ steps.extract_date.outputs.DATE }}
-      - name: Create relese 
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        with:
-          tag_name: ${{ steps.extract_date.outputs.DATE }}
-          release_name: ${{ steps.extract_date.outputs.DATE }}
-          draft: false
-          prerelease: false
       - name: Deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
