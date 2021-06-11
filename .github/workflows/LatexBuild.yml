@@ -112,8 +112,7 @@ jobs:
           TAG="${{ steps.extract_date.outputs.DATE }}"
           MSG="${{ github.event.head_commit.message }}"
           echo $TAG
-          git tag -m "$MSG" "$TAG"  #crea tag con messaggio e tag
-          hub release create -m "$(git tag -l --format='%(contents)' "$TAG")" "$TAG" || true #crea release con messaggio uguale al messaggio del tag (dovrebbe essere uguale a MSG)
+          hub release create -m "$MSG" "$TAG" || true #crea release con messaggio uguale a MSG)
           while IFS= read -r file; do
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
