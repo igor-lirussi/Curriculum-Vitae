@@ -102,12 +102,10 @@ jobs:
           TAG="${{ steps.extract_date.outputs.DATE }}"
           MSG="${{ github.event.head_commit.message }}"
           echo $TAG
-          hub release create -m "$MSG" "$TAG" || true #crea release con messaggio uguale a MSG)
-          pwd
+          hub release create -m "$TAG" "$TAG" || true #crea release 
           tree
-          cd /home/runner/work/Curriculum-Vitae/Curriculum-Vitae
-          pwd
           while IFS= read -r file; do
+            echo $file
             pdf="${file%.*}.pdf"
             echo "Delivering file $pdf"
             gh release upload "$TAG" "$pdf" --clobber
