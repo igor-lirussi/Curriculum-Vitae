@@ -104,12 +104,10 @@ jobs:
           echo $TAG
           hub release create -m "$TAG" "$TAG" || true #crea release 
           tree
-          while IFS= read -r file; do
-            echo $file
-            pdf="${file%.*}.pdf"
-            echo "Delivering file $pdf"
-            gh release upload "$TAG" "$pdf" --clobber
-          done 
+          for f in ./*.pdf; do
+            echo "Delivering file: $f"
+            gh release upload "$TAG" "$f" --clobber
+          done
 
   TelegramJobDeploy:
       needs: [DeployJob] #when finished this job
