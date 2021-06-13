@@ -16,9 +16,16 @@ jobs:
         with:
           root_file: main.tex
           #pre_compile: "tlmgr update --self --all"
-          args: "-pdf -jobname=Lirussi-Igor-CV -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist"
+          args: "-pdf -jobname=Lirussi-Igor-CV -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist -usepretex=\\def\\isShort{0} "
           post_compile: "latexmk -c"
-      - name: Compile LaTeX Document-ita 
+      - name: Compile LaTeX Document Short
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+          #pre_compile: "tlmgr update --self --all"
+          args: "-pdf -jobname=Lirussi-Igor-CV-Short -file-line-error -halt-on-error -interaction=nonstopmode -logfilewarninglist -usepretex=\\def\\isShort{1} "
+          post_compile: "latexmk -c"
+      - name: Compile LaTeX Document Ita 
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main-ita.tex
@@ -48,6 +55,7 @@ jobs:
           name: Artifacts
           path: |
             Lirussi-Igor-CV.pdf
+            Lirussi-Igor-CV-Short.pdf
             Lirussi-Igor-CV-Ita.pdf
 
           

@@ -45,7 +45,14 @@
 %%% ------------------------------------------------------------
 \newlength{\spacebox}
 \settowidth{\spacebox}{8888888888}			% Box to align text
-\newcommand{\sepspace}{\vspace*{1em}}		% Vertical space macro
+
+\newcounter{shortspace}
+\setcounter{shortspace}{0} %1=True, short version
+\ifthenelse{\value{shortspace}=0} {%long version
+    \newcommand{\sepspace}{\vspace*{1em}}	% Vertical space macro
+}{ %short version
+    \newcommand{\sepspace}{\vspace*{0.5em}}	% Vertical space macro
+}
 
 \newcommand{\MyName}[1]{ % Name 
 		 \huge \usefont{OT1}{phv}{b}{n} \hfill \textcolor{headings}{#1}
