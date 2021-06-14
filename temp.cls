@@ -1,4 +1,3 @@
-
 \NeedsTeXFormat{LaTeX2e}
 \DeclareOption{print}{\def\@cv@print{}}
 \DeclareOption*{%
@@ -6,6 +5,13 @@
 }
 \ProcessOptions\relax
 \LoadClass{scrartcl}
+
+%%%% Short or Long Version if argument not passed
+\ifx\isShort\undefined %if undefined
+  \def\isShort{0} % 1=True(short version), 0=False(Long version)
+\else
+  %% Defined from argument passed
+\fi
 
 %\usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -46,9 +52,7 @@
 \newlength{\spacebox}
 \settowidth{\spacebox}{8888888888}			% Box to align text
 
-\newcounter{shortspace}
-\setcounter{shortspace}{0} %1=True, short version
-\ifthenelse{\value{shortspace}=0} {%long version
+\ifthenelse{\isShort=0} {%long version
     \newcommand{\sepspace}{\vspace*{1em}}	% Vertical space macro
 }{ %short version
     \newcommand{\sepspace}{\vspace*{0.5em}}	% Vertical space macro

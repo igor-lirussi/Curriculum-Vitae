@@ -18,12 +18,6 @@
 
 \usepackage{lipsum} %provides filler text
 
-%Short Version
-\ifx\isShort\undefined
-  \def\isShort{1} %1=True, short version
-\else
-  %% Defined from argument passed
-\fi
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
@@ -32,17 +26,17 @@
    \includegraphics[width=1\textwidth]{photo} %photo
 \end{minipage}      
 \begin{minipage}{0.7\linewidth}
-   \MyName{Igor Lirussi}
-   \sepspace
-   \noindent
-   % info 
-   \hfill Gender: M | Nationality: Italian | Birth: 25/12/1995| Marital Status: Single
-   
-   \hfill igor.lirussi@studio.unibo.it | +39 3317055048 
-   
-   \hfill GitHub/LinkedIn: igor-lirussi | Skype: igor.lirussi
-   
-   \hfill via VI Maggio, 24, 33030, Forgaria nel Friuli (UD), Italy
+    \MyName{Igor Lirussi}
+    \sepspace
+    \noindent
+    % info 
+    \hfill Gender: M | Nationality: Italian | Marital Status: Single | Birth: 25/12/1995
+    
+    \hfill igor.lirussi@studio.unibo.it | +39 3317055048 
+    
+    \hfill GitHub/LinkedIn: igor-lirussi | Skype: igor.lirussi
+    
+    \hfill via VI Maggio, 24, 33030, Forgaria nel Friuli (UD), Italy
  
 \end{minipage}
 
@@ -51,87 +45,104 @@
 \NewPart{Work Experience}{}
 \noindent
 
+\href{https://www.kth.se/is/rpl}{
 \shortEntry{RESEARCH ASSISTANT - ROBOTICS}
 {Apr 2020 - Sep 2020}
-{Stockholm (SE) \href{https://www.kth.se/is/rpl}{KTH Royal Institute of Technology: Robotic Perception and Learning Department}}
+{Stockholm (SE) KTH Royal Institute of Technology: Robotic Perception and Learning Department}
 {
- \begin{itemize}
-    \item Human Robot Interaction
-    \item Dialog Engines
- \end{itemize}
+    \ifthenelse{\isShort=0} {%long version
+     \begin{itemize}
+        \item Human Robot Interaction
+        \item Dialog Engines
+     \end{itemize}
+    }{%short version
+     Human Robot Interaction and Dialog Engines
+    } 
 } {IMG/kth}
-
+}
 \sepspace
 
+\href{https://welcome.isr.tecnico.ulisboa.pt/}{
 \shortEntry{RESEARCH SCHOLAR - COMPUTER VISION}
 {Sep 2018 - Sep 2019 }
-{Lisbon (PT) \href{https://welcome.isr.tecnico.ulisboa.pt/}{ I.S.R. Institute for Systems and Robotics - VisLab}}
+{Lisbon (PT)  I.S.R. Institute for Systems and Robotics - VisLab}
 {
- \begin{itemize}
-    \item Object recognition and Dialog Processing for Human Robot Interaction
-    \item SLAM and Visual Navigation Systems
- \end{itemize}
+    \ifthenelse{\isShort=0} {%long version
+     \begin{itemize}
+        \item Object recognition and Dialog Processing for Human-Robot Interaction
+        \item SLAM and Visual Navigation Systems
+     \end{itemize}
+    }{%short version
+     Object Recognition, NLP for Human-Robot Interaction, SLAM and Visual Navigation Systems
+    } 
 } {IMG/ist}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewPart{Education}{}
 \noindent
 
-\longEntry{\href{https://corsi.unibo.it/2cycle/ComputerScienceEngineering}{MSc. COMPUTER SCIENCE AND ENGINEERING}}
+\href{https://corsi.unibo.it/2cycle/ComputerScienceEngineering}{
+\longEntry{MSc. COMPUTER SCIENCE AND ENGINEERING}
 {Sep 2019 - Today}
 {University of Bologna}
 {
     \ifthenelse{\isShort=0} {%long version
-    Distributed Systems, Machine Learning,    Languages, Compilers and Computational Models,    Information Systems,     Concurrent and Distributed Programming,    Programming and Development paradigms,    Web Services and Applications,     Smart City and Mobile Technologies,     Agile, Continuous Integration and Delivery, 
-    }{ %short version
+    Distributed Systems, Machine Learning, Languages, Compilers and Computational Models, Information Systems, Concurrent and Distributed Programming, Programming and Development Paradigms, Web Services and Applications, Smart City and Mobile Technologies, Agile, Continuous Integration and Delivery. 
+    }{%short version
+    LM-32 - 2nd level-cycle degree in Computer Engineering
     } 
 } 
 {IMG/unibo}
-
-
+}
 \sepspace
 
-\longEntry{\href{https://dsv.su.se/en/}{ERASMUS MSc.}}
+\href{https://dsv.su.se/en/}{
+\longEntry{ERASMUS MSc.}
 {Jan 2020 - Jul 2020}
 {Stockholm University}
 {Decision Making and Business Intelligence, Network Security, Cyber Forensics}
 {IMG/stockholmuni}
-
+}
 \sepspace
 
-\longEntry{\href{https://ciencias.ulisboa.pt/en}{ERASMUS BSc.}}
+\href{https://ciencias.ulisboa.pt/en}{
+\longEntry{ERASMUS BSc.}
 {Sep 2018 - Sep 2019}
 {Lisbon University}
 {Artificial Intelligence, Operational Research} 
 {IMG/ulisboa}
-
+}
 \sepspace
 
-\longEntry{\href{https://corsi.unibo.it/1cycle/ComputerScienceEngineering}{BSc. COMPUTER SCIENCE AND ENGINEERING}}
+\href{https://corsi.unibo.it/1cycle/ComputerScienceEngineering}{
+\longEntry{BSc. COMPUTER SCIENCE AND ENGINEERING}
 {Sep 2014 - Sep 2019}
 {University of Bologna }
 {
     \ifthenelse{\isShort=0} {%long version
     Software Engineering, Embedded Systems and IoT, Automatic Controls, Mobile Application Programming, Operating Systems, Object-Oriented Programming, Network Programming, Telecommunications Networks, Law for Information Technology, Fundamentals of Image Processing, Databases, Algorithms and Data Structures, Computer Architecture, C Programming
-    }{ %short version
+    }{%short version
+    L-8 - 1st level-cycle degree in Information Technology
     } 
 } 
 {IMG/unibo}
-
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewPart{Skills \& Interests}{}
 \hspace{3mm}
-\begin{minipage}[t]{0.30\textwidth} 
-\begin{tabular}[t]{ l l }
-\flag{IMG/flag/it}  & Native Speaker \\
-\flag{IMG/flag/gb}  & Professional Proficiency \\
-\flag{IMG/flag/pt}  & Conversational level \\
-\flag{IMG/flag/se}  & Basic level \\
+\begin{minipage}[t]{0.32\textwidth} 
+%Languages (ISO 639-1)
+\begin{tabular}[t]{ l c l}
+\flag{IMG/flag/it}  & IT & Native Speaker \\
+\flag{IMG/flag/gb}  & EN & Full Proficiency \\
+\flag{IMG/flag/pt}  & PT & Conversational level\\
+\flag{IMG/flag/sv}  & SV & Basic level \\
 \end{tabular}
 \end{minipage}
 %
-\begin{minipage}[t]{0.66\textwidth} 
+\begin{minipage}[t]{0.65\textwidth} 
 \begin{tabular}[t]{l l}
 Theoretical and Practical course of First Aid for companies\\
 Cinema course with Italian director Alessandro Quadretti\\
