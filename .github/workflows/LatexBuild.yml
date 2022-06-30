@@ -59,7 +59,7 @@ jobs:
             Lirussi-Igor-CV-Ita.pdf
 
           
-  TelegramJobFailure:
+  TelegramFailureBuildJob:
       needs: [BuildLatexJob] #when finished this job
       if: failure() # if its failed
       runs-on: ubuntu-20.04
@@ -116,10 +116,35 @@ jobs:
             echo "Delivering file: $f"
             gh release upload "$TAG" "$f" --clobber
           done
-
-  TelegramJobDeploy:
+          
+  TelegramFailureDeployJob:
       needs: [DeployJob] #when finished this job
-      if: success() # if its failed
+      if: failure() # if its failed
+      runs-on: ubuntu-20.04
+      steps:
+      - name: Clone Repo with Checkout 
+        uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: Logs
+      - name: Send custom Telegram message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+              ${{ github.event_name }} event,
+              on github.com/${{ github.repository }}, 
+              by ${{ github.actor }}.
+              /!\ FAILED /!\
+          disable_web_page_preview: true
+          document: small.log
+          
+  
+  TelegramSuccessDeployJob:
+      needs: [DeployJob] #when finished this job
+      if: success() # if its ok
       runs-on: ubuntu-20.04
       steps:
       - name: Clone Repo with Checkout # first step
