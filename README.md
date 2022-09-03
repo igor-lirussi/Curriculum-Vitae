@@ -1,4 +1,4 @@
-# Curriculum-Vitae
+# Igor Lirussi Curriculum-Vitae
 
 ### [<img src="https://img.icons8.com/clouds/80/000000/resume.png" alt="Download Short CV"/> My SHORT cv is available here in pdf ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV-Short.pdf "Download Short CV")
 
