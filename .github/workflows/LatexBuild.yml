@@ -116,6 +116,11 @@ jobs:
             echo "Delivering file: $f"
             gh release upload "$TAG" "$f" --clobber
           done
+      - name: Update with Datetime of Workflow #requires checkout
+        uses: ZekeriyaAY/workflow-date@main
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          date_format: '%a %d %b %Y %H:%M %Z'
           
   TelegramFailureDeployJob:
       needs: [DeployJob] #when finished this job
