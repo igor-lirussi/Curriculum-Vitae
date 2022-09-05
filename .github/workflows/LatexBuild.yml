@@ -115,8 +115,10 @@ jobs:
           for f in ./*.pdf; do
             echo "Delivering file: $f"
             gh release upload "$TAG" "$f" --clobber
+            rm $f
           done
       - name: Update with Datetime of Workflow #requires checkout
+        if: success()
         uses: ZekeriyaAY/workflow-date@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
