@@ -31,7 +31,7 @@
     % info 
     \hfill Gender: M | Nationality: Italian | Marital Status: Single | Birth: 25/12/1995
     
-    \hfill \href{mailto:igor.lirussi@studio.unibo.it}{igor.lirussi@studio.unibo.it } | +39 3317055048 
+    \hfill \href{mailto:igor.lirussi@studio.unibo.it}{igor.lirussi@studio.unibo.it} | +39 3317055048 
     
     \hfill GitHub/LinkedIn: igor-lirussi | Skype: igor.lirussi
     
@@ -46,7 +46,7 @@
 
 \href{https://colors.cmpe.boun.edu.tr}{
 \shortEntry{RESEARCH ASSISTANT - COGNITIVE ROBOTICS}
-{Oct 2021 - Sep 2022}
+{Oct 2021 - Oct 2022}
 {Istanbul (TR) Boğaziçi University: Cognitive Learning and Robotics Laboratory}
 {
     \ifthenelse{\isShort=0} {%long version
@@ -146,32 +146,48 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\NewPart{Skills \& Interests}{}
-\hspace{3mm}
+\ifthenelse{\isShort=0} {%long version
+\NewPart{ Technical Skills \& Software }{}
+\begin{minipage}[t]{0.65\textwidth} 
+\begin{tabular}[t]{ l }
+Paradigms: OOP, Functional, Concurrent.\\
+Languages: C, C\#, Java, Scala, Bash scripting, Python.\\
+Frameworks: OpenCV, ROS, Git. \\
+ \\
+\end{tabular}
+\end{minipage}
+%
+\begin{minipage}[t]{0.32\textwidth} 
+\begin{tabular}[t]{ l l }
+\software{IMG/software/git}  & Git/GitHub Actions-Projects\\
+\software{IMG/software/latex}  & Latex Writing\\
+\software{IMG/software/unity} & Unity\\
+\software{IMG/software/office} & Office Suite\\
+\end{tabular}
+\end{minipage}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewPart{Languages \& Interests}{}
+\hspace{3mm} %space on the sides
 \begin{minipage}[t]{0.32\textwidth} 
 %Languages (ISO 639-1)
 \begin{tabular}[t]{ l c l }
-\flag{IMG/flag/it}  & IT & Native Speaker \\
-\flag{IMG/flag/gb}  & EN & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/IELTS_LIRUSSI.pdf}{Full Proficiency }\\
-\flag{IMG/flag/pt}  & PT & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_PT_LIRUSSI.pdf}{Conversational level }\\
-\flag{IMG/flag/sv}  & SV & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_SE_LIRUSSI.pdf}{Basic level}\\
-%\flag{IMG/flag/de}  & DE & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_DE_LIRUSSI.pdf}{Basic level}\\
+\flag{IMG/flag/it} & IT & Native Speaker \\
+\flag{IMG/flag/gb} & EN & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/IELTS_LIRUSSI.pdf}{Full Proficiency}\\
+\flag{IMG/flag/pt} & PT & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_PT_LIRUSSI.pdf}{Conversational}\\
+\flag{IMG/flag/sv} & SV & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_SE_LIRUSSI.pdf}{Basic level}\\
+%\flag{IMG/flag/tr} & TR & Basic level\\
+%\flag{IMG/flag/de} & DE & A2 & \href{https://github.com/igor-lirussi/Curriculum-Vitae/raw/main/Certificates/cert_DE_LIRUSSI.pdf}{Basic level}\\
 \end{tabular}
 \end{minipage}
 %
 \begin{minipage}[t]{0.65\textwidth} 
-\begin{tabular}[t]{ l l }
-\href{https://site.unibo.it/startupdayunibo/en/programme/the-30-new-emerging-ideas-of-2021}{Winner "The 30 new emerging ideas of 2021" - StartUp Day Unibo}\\
+\begin{tabular}[t]{ l }
+\href{https://site.unibo.it/startupdayunibo/en/}{Winner "The 30 new emerging ideas of 2021" - StartUp Day Unibo}\\
 Theoretical and Practical course of First Aid for companies\\
-Great Cook and Sport Enthusiast\\
+Cooking and Sport Enthusiast\\
 Food Aid Program Volunteer - Blood Donor\\
-
-
-%\software{IMG/soft/writeL}  	 & Latex Writing\\
-%\software{IMG/soft/office} 		 & This software experience. fillertext fillertext fillertex\\
-%\software{IMG/soft/Matlab}  	 & This software experience. fillertext fillertext fillertex\\
-%\software{IMG/soft/office} 		 & This software experience. fillertext fillertext fillertex\\
-%\software{IMG/soft/Matlab}  	 & This software experience. fillertext fillertext fillertex\\
 \end{tabular}
 \end{minipage}
 
