@@ -1,9 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[paper=a4,fontsize=11pt, hidelinks]{temp} % KOMA-article class
+
+\usepackage{layout} % to visualize layout with \layout
 \usepackage[english]{babel}
 \usepackage{hyperref} %hyperlinks
 \usepackage{fancyhdr}
 \usepackage{ifthen} %if then commands
+\usepackage{fontawesome} %www.latexdraw.com/wp-content/uploads/2021/01/fontawesome5_2.pdf
+
 % for header/footer
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt} %header separation-line width
@@ -15,27 +19,26 @@
     \thepage %page number
 }
 
-\usepackage{lipsum} %provides filler text
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-% Upload a your photo and rename it to "photo.png" or "photo.jpg"
-\begin{minipage}{.2\linewidth}
-   \includegraphics[width=1\textwidth]{photo} %photo
+% Upload your photo and rename it to "photo.png" or "photo.jpg"
+\begin{minipage}{0.2\linewidth}
+   \includegraphics[width=1\textwidth]{photo}
 \end{minipage}      
 \begin{minipage}{0.7\linewidth}
     \MyName{Igor Lirussi}
     \sepspace
     \noindent
     % info 
-    \hfill Gender: M | Nationality: Italian | Marital Status: Single | Birth: 25/12/1995
+    \hfill {\color{headings}Nationality:} Italian | {\color{headings}Birth:} 25/12/1995 | {\color{headings} Gender:} M | {\color{headings} Marital Status:} Single
     
-    \hfill \href{mailto:igor.lirussi@studio.unibo.it}{igor.lirussi@studio.unibo.it} | +39 3317055048 
+    \hfill {\color{headings}\faEnvelope} \href{mailto:igor.lirussi@studio.unibo.it}{igor.lirussi@studio.unibo.it}
+    | {\color{headings}\faPhone}  0039 3317055048 
     
-    \hfill GitHub/LinkedIn: igor-lirussi | Skype: igor.lirussi
+    \hfill {\color{headings}GitHub/LinkedIn:} igor-lirussi | {\color{headings}Skype:} igor.lirussi
     
-    \hfill via VI Maggio, 24, 33030, Forgaria nel Friuli (UD), Italy
+    \hfill {\color{headings}\faMapMarker} via VI Maggio 24, 33030, Forgaria nel Friuli (UD), Italy
  
 \end{minipage}
 
@@ -49,13 +52,14 @@
 {Oct 2021 - Oct 2022}
 {Istanbul (TR) Boğaziçi University: Cognitive Learning and Robotics Laboratory}
 {
+Enabled industrial robot to pick an object requested. Particle-simulation physics in VR.
     \ifthenelse{\isShort=0} {%long version
      \begin{itemize}
         \item Cognitive Robotics
         \item Virtual Reality
      \end{itemize}
     }{%short version
-     Cognitive Robotics and Virtual Reality
+     \\Cognitive Robotics and Virtual Reality
     } 
 } {IMG/bogazici}
 }
@@ -66,13 +70,14 @@
 {Apr 2020 - Sep 2020}
 {Stockholm (SE) KTH Royal Institute of Technology: Robotic Perception and Learning Department}
 {
+Creation of software for natural language interaction with a humanoid robot.
     \ifthenelse{\isShort=0} {%long version
      \begin{itemize}
-        \item Human Robot Interaction
+        \item Human-Robot Interaction
         \item Dialog Engines
      \end{itemize}
     }{%short version
-     Human Robot Interaction and Dialog Engines
+     \\Human-Robot Interaction and Dialog Engines
     } 
 } {IMG/kth}
 }
@@ -83,13 +88,14 @@
 {Sep 2018 - Sep 2019}
 {Lisbon (PT) IST Instituto Superior Técnico: I.S.R. Institute for Systems and Robotics - VisLab}
 {
+Development of software for a mobile robot to navigate indoors and recognize surroundings.
     \ifthenelse{\isShort=0} {%long version
      \begin{itemize}
         \item Object recognition and Dialog Processing for Human-Robot Interaction
         \item SLAM and Visual Navigation Systems
      \end{itemize}
     }{%short version
-     Object Recognition, NLP for Human-Robot Interaction, SLAM and Visual Navigation Systems
+     \\Object Recognition, NLP for Human-Robot Interaction, SLAM and Visual Navigation Systems
     } 
 } {IMG/ist}
 }
@@ -146,26 +152,38 @@
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\ifthenelse{\isShort=0} {%long version
 \NewPart{ Technical Skills \& Software }{}
-\begin{minipage}[t]{0.65\textwidth} 
-\begin{tabular}[t]{ l }
-Paradigms: OOP, Functional, Concurrent.\\
-Languages: C, C\#, Java, Scala, Bash scripting, Python.\\
-Frameworks: OpenCV, ROS, Git. \\
- \\
-\end{tabular}
+\begin{minipage}[t]{0.67\textwidth} 
+\ifthenelse{\isShort=0} {%long version
+    \begin{itemize}
+    \item Good mastery of high and low-level programming/mark-up languages (HTML-CSS, Assembly, C, C\#, Java, Scala, Python, SQL, Bash scripting).
+    \item Advanced knowledge of Digital Image Processing/Image Elaboration/Template Matching algorithms.
+    \item Advanced skills in video and photo editing programs.
+    \item Good knowledge of high-performance and data-intensive computing, Machine Learning and BI.
+    \item Moderate mastery of software for automation, internal dynamics of micro-controllers, embedded systems and operation of sensors and mechanical actuators.
+    \end{itemize}
+}{%short version
+    \begin{tabular}[t]{ l }
+    Programming paradigms: imperative/OO/functional/logic/concurrent.\\
+    Languages: C, C++, C\#, Java, Scala, Bash scripting, Python.\\
+    Advanced knowledge of embedded systems and automation, \\
+    image processing algorithms, machine learning, video/photo editing.\\
+    \end{tabular}
+}
 \end{minipage}
 %
 \begin{minipage}[t]{0.32\textwidth} 
-\begin{tabular}[t]{ l l }
+\begin{tabular}[t]{ r l }
 \software{IMG/software/git}  & Git/GitHub Actions-Projects\\
-\software{IMG/software/latex}  & Latex Writing\\
-\software{IMG/software/unity} & Unity\\
-\software{IMG/software/office} & Office Suite\\
+\software{IMG/software/opencv}  & OpenCV\\
+\software{IMG/software/unity} & Unity \\
+\software{IMG/software/latex}  & Latex Writing
+\ifthenelse{\isShort=0} {%long version
+    \\\software{IMG/software/ros}  & ROS\\
+    \software{IMG/software/office} & Office Suite
+}{}
 \end{tabular}
 \end{minipage}
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewPart{Languages \& Interests}{}
@@ -184,9 +202,9 @@ Frameworks: OpenCV, ROS, Git. \\
 %
 \begin{minipage}[t]{0.65\textwidth} 
 \begin{tabular}[t]{ l }
-\href{https://site.unibo.it/startupdayunibo/en/}{Winner "The 30 new emerging ideas of 2021" - StartUp Day Unibo}\\
+\href{https://site.unibo.it/startupdayunibo/en/}{Winner "The 30 new emerging ideas of 2021" - Startup Day Unibo}\\
 Theoretical and Practical course of First Aid for companies\\
-Cooking and Sport Enthusiast\\
+Cooking and Sports Enthusiast\\
 Food Aid Program Volunteer - Blood Donor\\
 \end{tabular}
 \end{minipage}
