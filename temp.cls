@@ -22,7 +22,7 @@
 \usepackage{amsmath,amsfonts,amsthm}    
 \usepackage[pdftex]{graphicx}
 \usepackage{wrapfig}
-\usepackage[hmargin=1.25cm, top=1.5cm, bottom=3.5cm ]{geometry}
+\usepackage[hmargin=1.25cm, top=1.5cm, bottom=2cm, textheight=1cm, footskip=0.5cm ]{geometry}
 \usepackage[usenames,dvipsnames]{xcolor}
 
 \usepackage{sidecap}
@@ -53,9 +53,9 @@
 \settowidth{\spacebox}{8888888888}			% Box to align text
 
 \ifthenelse{\isShort=0} {%long version
-    \newcommand{\sepspace}{\vspace*{1em}}	% Vertical space macro
+    \newcommand{\sepspace}{\vspace*{1em}}	% Vertical space macros normal
 }{ %short version
-    \newcommand{\sepspace}{\vspace*{0.5em}}	% Vertical space macro
+    \newcommand{\sepspace}{\vspace*{0.5em}}	% Vertical space macros reduced in all doc
 }
 
 \newcommand{\MyName}[1]{ % Name 
