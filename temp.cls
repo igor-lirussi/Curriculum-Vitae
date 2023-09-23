@@ -22,7 +22,7 @@
 \usepackage{amsmath,amsfonts,amsthm}    
 \usepackage[pdftex]{graphicx}
 \usepackage{wrapfig}
-\usepackage[hmargin=1.25cm, top=1.5cm, bottom=2cm, textheight=1cm, footskip=0.5cm ]{geometry}
+\usepackage[hmargin=1.25cm, top=1.5cm, bottom=2cm, footskip=0.5cm ]{geometry}
 \usepackage[usenames,dvipsnames]{xcolor}
 
 \usepackage{sidecap}
