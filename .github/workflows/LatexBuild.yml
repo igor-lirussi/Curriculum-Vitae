@@ -101,29 +101,24 @@ jobs:
           echo "::set-output name=DATE::Release-$(date +%F_%H-%M)"
       - name: Print Output Step
         run: echo ${{ steps.extract_date.outputs.DATE }}
-      - name: Deploy
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.extract_date.outputs.DATE }}
+          name: ${{ steps.extract_date.outputs.DATE }}
+          body: ${{ github.event.head_commit.message }}
+          files: |
+            *.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.email "${{ secrets.EMAIL }}"
-          git config --global user.name "${{ secrets.NAME }}"
-          TAG="${{ steps.extract_date.outputs.DATE }}"
-          MSG="${{ github.event.head_commit.message }}"
-          echo $TAG
-          hub release create -m "$TAG" "$TAG" || true #crea release 
-          tree
-          for f in ./*.pdf; do
-            echo "Delivering file: $f"
-            gh release upload "$TAG" "$f" --clobber
-            rm $f
-          done
       - name: Update with Datetime of Workflow #requires checkout
         if: success()
         uses: ZekeriyaAY/workflow-date@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           date_format: '%a %d %b %Y %H:%M %Z'
-          
+
+
   TelegramFailureDeployJob:
       needs: [DeployJob] #when finished this job
       if: failure() # if its failed
