@@ -38,7 +38,7 @@ jobs:
         run: cat main.log | grep -n -E 'LaTeX Error|LaTeX Warning|Undefined' > small.log
       - name: Upload Logs
         if: failure()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Logs
           path: |
@@ -50,7 +50,7 @@ jobs:
         run: cat small.log >&2
       - name: Upload Artifacts
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Artifacts
           path: |
@@ -152,7 +152,7 @@ jobs:
       - name: Clone Repo with Checkout # first step
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
       - name: Download Artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: Artifacts
       - name: Send custom Telegram message
