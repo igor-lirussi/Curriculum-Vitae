@@ -12,4 +12,4 @@
 Fri 04 Oct 2024 15:52 UTC
 <!-- DEFAULT-TAG:END --></i>
 
-NOTE: I generated my CV with LaTeX on Overleaf, the project is then synched with a GitHub repository. With GitHub Actions, I automatically create short and long-version PDFs and deploy them online at the latest links above, along with this webpage.
+NOTE: I created my CV with LaTeX on Overleaf, the project is then synched with a GitHub repository. With GitHub Actions, I automatically generate short and long-version PDFs and deploy them online at the latest links above, along with this webpage.
