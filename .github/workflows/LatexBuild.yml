@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   BuildLatexJob:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Setup Git repo
         uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
   TelegramFailureBuildJob:
       needs: [BuildLatexJob] #when finished this job
       if: failure() # if its failed
-      runs-on: ubuntu-20.04
+      runs-on: ubuntu-24.04
       steps:
       - name: Clone Repo with Checkout 
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
@@ -86,7 +86,7 @@ jobs:
   
   DeployJob:
     needs: BuildLatexJob
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Clone Repo with Checkout 
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
@@ -122,7 +122,7 @@ jobs:
   TelegramFailureDeployJob:
       needs: [DeployJob] #when finished this job
       if: failure() # if its failed
-      runs-on: ubuntu-20.04
+      runs-on: ubuntu-24.04
       steps:
       - name: Clone Repo with Checkout 
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
@@ -147,7 +147,7 @@ jobs:
   TelegramSuccessDeployJob:
       needs: [DeployJob] #when finished this job
       if: success() # if its ok
-      runs-on: ubuntu-20.04
+      runs-on: ubuntu-24.04
       steps:
       - name: Clone Repo with Checkout # first step
         uses: actions/checkout@v2 # clones repo! Action implemented in this repository, tag "2"
