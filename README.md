@@ -12,4 +12,6 @@
 Wed 08 Oct 2025 21:14 UTC
 <!-- DEFAULT-TAG:END --></i>
 
-NOTE: My CV is created with LaTeX code. From the Overleaf LaTeX project, the code is synced with a GitHub repository. Automatically, with GitHub Actions, I then generate both short and long version PDFs, including the version number, and deploy them online at the links above, along with this updated webpage.
+
+
+CV DEPLOYMENT NOTE: My CV is created with LaTeX code. From the Overleaf LaTeX project, the code gets automatically synced with a GitHub repository. With GitHub Actions, my code then generates both short and long PDF variations, including the version number in them. Lastly, the pdfs get deployed online at the links above, along with this webpage that is updated to match their version number.
