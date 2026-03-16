@@ -8,7 +8,7 @@
 
 %%%% Short or Long Version if argument not passed
 \ifx\isShort\undefined %if undefined
-  \def\isShort{0} % 1=True(short version), 0=False(Long version)
+  \def\isShort{1} % 1=True(short version), 0=False(Long version)
 \else
   %% Defined from argument passed
 \fi
