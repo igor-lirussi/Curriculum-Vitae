@@ -14,80 +14,136 @@
 \renewcommand{\footrulewidth}{0.4pt} %footer separation-line width
 \fancyhead[C]{} %header
 \cfoot{ %footer
-    In compliance with Italian Legislative Decree n.196 dated 30/06/2003, I hereby authorize to use and process my personal details contained in this document.
+    I hereby authorize the processing of my personal data pursuant to EU Regulation 2016/679 (GDPR) and Italian Legislative Decree 196/2003 as amended.
     \href{https://igor-lirussi.github.io/Curriculum-Vitae/}{Version updated on \today . \underline{Latest Here}} \\
     \thepage %page number
 }
+
+% --- Section title without \section* (avoids sectsty/KOMA conflict) ---
+\makeatletter
+\renewcommand{\NewPart}[1]{%
+  \par\addvspace{3.5ex \@plus 1ex \@minus .2ex}%
+  {\noindent\usefont{OT1}{phv}{b}{n}\Large\color{headings}%
+   \MakeUppercase{#1}\hfill\makebox[0pt][r]{\rule[-5pt]{\hsize}{3pt}}\par}%
+  \nobreak\vspace{2.3ex \@plus .2ex}\@afterheading}
+\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
 % Upload your photo and rename it to "photo.png" or "photo.jpg"
-\begin{minipage}{0.2\linewidth}
-   \includegraphics[width=1\textwidth]{photo}
-\end{minipage}      
-\begin{minipage}{0.75\linewidth}
+\newlength{\headw}
+\newlength{\rgap}\setlength{\rgap}{0.05\linewidth} % right gap: increase to move left
+\noindent%
+\ifthenelse{\isRegional=1}{%
+  \setlength{\headw}{0.75\linewidth}%
+  \begin{minipage}{0.2\linewidth}
+    \includegraphics[width=1\textwidth]{photo}
+  \end{minipage}\hfill
+}{\setlength{\headw}{\dimexpr\linewidth-\rgap\relax}}%
+\begin{minipage}{\headw}
     \MyName{Igor Lirussi}
     \sepspace
     \noindent
-    % info 
-    \hfill {\color{headings}Nationality:} Italian | {\color{headings}Birth:} 25/12/1995 | {\color{headings} Gender:} M | {\color{headings} Marital Status:} Single
-    
+    \ifthenelse{\isRegional=1}{%
+    \hfill {\color{headings}Nationality:} Italian | {\color{headings}Birth:} 25/12/1995 | {\color{headings} Gender:} M | {\color{headings} Marital Status:} Single\par
+    }{}
+
     \hfill {\color{headings}\faEnvelope} \href{mailto:lirussi.igor@gmail.com}{lirussi.igor@gmail.com}
     | {\color{headings}\faPhone}  0039 3317055048 
-    
+
     \hfill \href{https://igor-lirussi.github.io/ResearchSmall.html}{{\color{headings}\faFolder\space Portfolio: }igor-lirussi.github.io}| 
     \href{https://www.linkedin.com/in/igor-lirussi}{{\color{headings}\faLinkedin\space LinkedIn: }igor-lirussi}|
     \href{https://github.com/igor-lirussi}{{\color{headings}\faGithub\space GitHub:} igor-lirussi}
-    
     %\hfill {\color{headings}\faMapMarker} via VI Maggio 24, 33030, Forgaria nel Friuli (UD), Italy
- 
-\end{minipage}
+\end{minipage}\hspace*{\rgap}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewPart{Work Experience}{}
 \noindent
 
+\href{https://www.tii.ae}{
+\shortEntry{SENIOR RESEARCHER - ROBOT LEARNING}
+{Mar 2026 - present}
+{Abu Dhabi (UAE) Technology Innovation Institute: Humanoids Group}
+{
+Developed a real-time Human-Robot Interaction stack for humanoid robots: spoken conversation, event triggering, custom wake-word models, and scene perception, description and question answering, cutting latency 10x. Designed a speech-synchronized gesture server that blends and chains, in real time, kinesthetically taught gestures via Laplacian trajectory editing.
+} {IMG/tii}
+}
+\sepspace
+
+
+\href{https://fucinanexus.org/}{
+\shortEntry{RESEARCHER - AI AND ROBOTICS}
+{Apr 2024 - Dec 2025}
+{Rome (IT) Fucina Nexus Foundation (Remote)}
+{
+Developed software for a social robot for elderly people and children: natural conversation, detection of anomalies and notable events, and real-time alerts to a custom dashboard.
+} {IMG/fucina}
+}
+\sepspace
+
+
 \href{https://colors.cmpe.boun.edu.tr}{
 \shortEntry{RESEARCHER - COGNITIVE ROBOTICS AND MANIPULATION}
 {Oct 2021 - Feb 2024}
 {Istanbul (TR) Boğaziçi University: Cognitive Learning and Robotics Laboratory}
 {
-Enabled industrial and collaborative robots to learn manipulative actions, adapt them, plan and perform different primitives on real-life objects, assess the results to achieve long-term goals.
+Enabled industrial and collaborative robots to learn manipulative actions from few-shot demonstrations, adapt and perform different primitives on real-life objects, assess the results to plan and achieve long-term goals.
 } {IMG/bogazici}
 }
 \sepspace
+
 
 \href{https://buviar.bogazici.edu.tr}{
 \shortEntry{RESEARCHER - VIRTUAL REALITY}
 {Jun 2022 - Dec 2022}
 {Istanbul (TR) Boğaziçi University Virtual Augmented Reality Laboratory}
 {
-Integrated Particle Physics in VR for Fluid, Cloth, and Deformable Objects, 3D Models creation and animation, LIDAR scan of environments, photogrammetry, mesh cleanup, re-texturing.
+Integrated particle-based physics for fluids, cloth and deformable objects in Unity VR. Built and animated 3D assets via LiDAR scanning, photogrammetry, mesh cleanup and re-texturing.
 } {IMG/bogazici}
 }
 \sepspace
+
 
 \href{https://www.kth.se/is/rpl}{
 \shortEntry{RESEARCH ASSISTANT - INTERACTION ROBOTICS}
 {Apr 2020 - Sep 2020}
 {Stockholm (SE) KTH Royal Institute of Technology: Robotic Perception and Learning Department}
 {
-Creation of software for natural language interaction with a humanoid robot. Human-Robot Interaction and Dialog Engines, Conversation handling and users data memorization.
+Developed natural-language interaction software for a humanoid robot: dialogue engine, multi-turn conversation handling, and persistent per-user memory to personalize interactions.
 } {IMG/kth}
 }
 \sepspace
+
 
 \href{https://welcome.isr.tecnico.ulisboa.pt/}{
 \shortEntry{RESEARCH SCHOLAR - COMPUTER VISION}
 {Sep 2018 - Sep 2019}
 {Lisbon (PT) IST Instituto Superior Técnico: I.S.R. Institute for Systems and Robotics - VisLab}
 {
-Software enabling a mobile robot to navigate and recognize surroundings.
-SLAM and Visual Navigation Systems, Indoor Bluetooth Localization, Object Recognition, NLP for Robot Interaction
+Built the perception and navigation stack of a mobile robot: visual SLAM and autonomous indoor navigation, Bluetooth-beacon localization, face detection, object recognition, and an NLP module for voice interaction and parametrized task execution.
 } {IMG/ist}
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NewPart{Publications}{}
+\noindent
+
+\noindent \textbf{Novel Robotic Action Synthesis with Conditional Neural Movement Primitives.}\\
+Lirussi, I. \textit{MSc thesis}, Computer Science and Engineering, University of Bologna, Dec 2023.
+ Supervisor: Prof. Emre Ugur (Boğaziçi University)
+ \href{https://amslaurea.unibo.it/id/eprint/30641/}{[PDF]}
+\sepspace
+
+\noindent \textbf{Framework for Navigation and Human-Robot Interaction with Humanoid Robots.}\\
+Lirussi, I. \textit{BSc thesis}, Computer Science and Engineering, University of Bologna, Sep 2019.
+Supervisor: Prof. Alexandre Bernardino.
+\href{https://amslaurea.unibo.it/id/eprint/19120/}{[PDF]}
+\sepspace
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \NewPart{Education}{}
@@ -98,11 +154,11 @@ SLAM and Visual Navigation Systems, Indoor Bluetooth Localization, Object Recogn
 {Sep 2019 - Dec 2023}
 {University of Bologna}
 {
-    \textbf{Thesis: Novel robotic action synthesis with Conditional Neural Movement Primitives.}
+    %\textbf{Thesis: Novel robotic action synthesis with Conditional Neural Movement Primitives.} \\
     \ifthenelse{\isShort=0} {%long version
-    \\Machine Learning, Distributed Systems, Languages, Compilers and Computational Models, Information Systems, Concurrent and Distributed Programming, Programming and Development Paradigms, Web Services and Applications, Smart City and Mobile Technologies, Agile, Continuous Integration and Delivery, Launch a Software Startup. 
+    Machine Learning, Distributed Systems, Computational Models, Information Systems, Concurrent and Distributed Programming, Web Services and Applications, Smart City, Development Paradigms, Agile, Scrum, Continuous Integration and Delivery, Launch a Software Startup. 
     }{
-    \\Exchange MSc student at Stockholm University: Network Security, BI, and Cyber Forensics.
+    Exchange MSc student at Stockholm University: Network Security, BI, and Cyber Forensics.
     }
 } 
 {IMG/unibo}
@@ -135,11 +191,11 @@ SLAM and Visual Navigation Systems, Indoor Bluetooth Localization, Object Recogn
 {Sep 2014 - Sep 2019}
 {University of Bologna}
 {
-    \textbf{Thesis: Framework for navigation and Human-Robot interaction with humanoid robots.}
+    %\textbf{Thesis: Framework for navigation and Human-Robot interaction with humanoid robots.}\\
     \ifthenelse{\isShort=0} {%long version
-    \\Software Engineering, Embedded Systems and IoT, Automatic Controls, Mobile App Programming, Operating Systems, Object-Oriented Programming, Network Programming, Telecommunications Networks, Law for Information Technology, Fundamentals of Image Processing, Databases, Algorithms and Data Structures, Computer Architecture, C Programming
+    Software Engineering, Embedded Systems and IoT, Automatic Controls, Mobile Apps, Operating Systems, Object-Oriented Programming, Network and Telecommunications, Law for IT, Image Processing, Databases, Algorithms and Data Structures, Computer Architecture, C Programming
     }{
-    \\Exchange student at Lisbon University: Artificial Intelligence, Operational Research.
+    Exchange student at Lisbon University: Artificial Intelligence, Operational Research.
     }
 } 
 {IMG/unibo}
@@ -150,35 +206,36 @@ SLAM and Visual Navigation Systems, Indoor Bluetooth Localization, Object Recogn
 \begin{minipage}[t]{0.67\textwidth} 
 \ifthenelse{\isShort=0} {%long version
     \begin{itemize}
-    \item \href{https://github.com/igor-lirussi}{Mastery of programming paradigms (imperative, OOP, functional, logic, concurrent) and languages (Python, Java, Scala, Bash scripting, C, C++, C\#, HTML-CSS, PHP, Javascript, Assembly, Prolog, SQL).}
-    \item Advanced knowledge of Digital Image Processing/Image Elaboration/Template Matching and Computer Vision algorithms.
-    \item Proficient understanding of software for automation, robotics internal dynamics of micro-controllers, IoT, embedded systems, and operation of sensors and mechanical actuators.
-    \item Competent knowledge of high-performance and data-intensive computing, Machine Learning, and BI.
-    \item Advanced skills in video/photo editing programs, video making, GUI and graphics design.
+    \item \href{https://github.com/igor-lirussi}{Programming: Python, C++, C, C\#, Java, Bash, JavaScript, SQL; OOP, functional and concurrent paradigms.}
+    \item Robotics: ROS/ROS~2 on humanoids, Baxter and UR10; learning from demonstration (CNMP), trajectory generation and editing, visual SLAM (ORB-SLAM) for manipulation; MuJoCo simulation.
+    \item Motion capture and teleoperation: IMU suits (Xsens), optical marker-based and markerless tracking, Apple Vision Pro teleoperation, motion retargeting.
+    \item AI: PyTorch, LLM/VLM integration, real-time speech (OpenAI and Gemini Realtime APIs), wake-word models, object detection with OpenCV.
+    \item VR and 3D: Unity VR development, photogrammetry, LiDAR scanning, mesh cleanup.
+    \item Deployment and tools: Docker, Linux/WSL, SSH, NVIDIA Jetson (AGX Orin, Thor), FastAPI/Uvicorn, Git/GitLab CI/CD, Jira, Confluence.
     \end{itemize}
 }{%short version
     \begin{tabular}[t]{ l }
-    Programming paradigms: imperative/OOP/functional/logic/concurrent.\\
-    Languages: C, C++, C\#, Java, Scala, Bash scripting, Python.\\
-    Advanced knowledge of embedded systems and automation, \\
-    Image processing algorithms, machine learning, video/photo editing.\\
+    Languages: Python, C++, C, C\#, Java, Bash.\\
+    Robotics: ROS~2, MuJoCo, LfD, visual SLAM, MoCap, VR teleoperation.\\
+    AI: PyTorch, OpenCV, LLM/VLM and real-time speech APIs.\\
+    Tools: Docker, Linux, NVIDIA Jetson, FastAPI, GitLab CI, Jira.\\
     \end{tabular}
 }
 \end{minipage}
 %
 \begin{minipage}[t]{0.32\textwidth} 
 \begin{tabular}[t]{ r l }
-\software{IMG/software/git}  & Git/GitHub Actions/Projects\\
+\software{IMG/software/ros}  & ROS / ROS~2\\
+\software{IMG/software/pytorch}  & PyTorch\\
+\software{IMG/software/docker}  & Docker\\
 \software{IMG/software/opencv}  & OpenCV\\
-\software{IMG/software/ros}  & ROS\\
-\software{IMG/software/pytorch}  & PyTorch
+\software{IMG/software/git}  & Git/GitLab/GitHub CI
 \ifthenelse{\isShort=0} {%long version
     \\
-    \software{IMG/software/unity} & Unity \\
-    \software{IMG/software/esp} & Esp32/Arduino/Raspberry\\
+    \software{IMG/software/mujoco} & MuJoCo \\
+    \software{IMG/software/unity} & Unity VR \\
+    \software{IMG/software/esp} & ESP32/Arduino/Raspberry\\
     \software{IMG/software/latex}  & LaTeX Writing \\
-    \software{IMG/software/office} & Office Suite \\
-    \software{IMG/software/premiere}  & Adobe Premiere Pro\\
 }{}
 \end{tabular}
 \end{minipage}
