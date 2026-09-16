@@ -6,11 +6,16 @@
 \ProcessOptions\relax
 \LoadClass{scrartcl}
 
-%%%% Short or Long Version if argument not passed
+%%%% Short or Long Version (if argument not passed)
 \ifx\isShort\undefined %if undefined
-  \def\isShort{1} % 1=True(short version), 0=False(Long version)
+  \def\isShort{0} % 1=True(short version), 0=False(Long version)
 \else
   %% Defined from argument passed
+\fi
+
+%%%% Regional or International Version (if argument not passed)
+\ifx\isRegional\undefined
+  \def\isRegional{1} % 1=Regional (photo + personal data), 0=International
 \fi
 
 %\usepackage[english]{babel}
@@ -53,9 +58,9 @@
 \settowidth{\spacebox}{8888888888}			% Box to align text
 
 \ifthenelse{\isShort=0} {%long version
-    \newcommand{\sepspace}{\vspace*{1em}}	% Vertical space macros normal
+    \newcommand{\sepspace}{\vspace{1em}}	% Vertical space macros normal
 }{ %short version
-    \newcommand{\sepspace}{\vspace*{0.5em}}	% Vertical space macros reduced in all doc
+    \newcommand{\sepspace}{\vspace{0.5em}}	% Vertical space macros reduced in all doc
 }
 
 \newcommand{\MyName}[1]{ % Name 

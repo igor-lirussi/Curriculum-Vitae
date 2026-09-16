@@ -2,11 +2,13 @@
     <h1> Igor Lirussi </h1>
 </div>
 
-### [<img src="https://img.icons8.com/clouds/80/000000/documents.png" alt="Download Full CV"/> My FULL cv is available here in pdf ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV.pdf "Download Full CV")
+### [<img src="https://img.icons8.com/clouds/80/000000/documents.png" alt="Download Full CV"/> My FULL International cv is available here in pdf ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV.pdf "Download International CV")
 
-### [<img src="https://img.icons8.com/clouds/80/000000/resume.png" alt="Download Short CV"/> My ONE-PAGE cv is available here in pdf ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV-Short.pdf "Download One-Page CV")
+### [<img src="https://img.icons8.com/clouds/80/000000/resume.png" alt="Download Short CV"/> My FULL Regional cv is available here in pdf ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV-Regional.pdf "Download Regional CV")
 
-### [<img src="https://img.icons8.com/clouds/80/000000/italy.png"  alt="Download Ita CV" /> Il mio curriculum in italiano è disponibile in pdf qui ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV-Ita.pdf "Download Ita CV")
+### [<img src="https://img.icons8.com/clouds/80/000000/italy.png"  alt="Download Ita CV" /> Il mio curriculum in italiano è disponibile in pdf qui ](https://github.com/igor-lirussi/Curriculum-Vitae/releases/latest/download/Lirussi-Igor-CV-Ita.pdf "Download Italian CV")
+
+
 
 <i>Last Update: <!-- DEFAULT-TAG:START -->
 Mon 16 Mar 2026 20:03 UTC
@@ -14,4 +16,4 @@ Mon 16 Mar 2026 20:03 UTC
 
 
 
-CV DEPLOYMENT NOTE: My CV is created with LaTeX code. From the Overleaf LaTeX project, the code gets automatically synced with a GitHub repository. With GitHub Actions, my code then generates both short and long PDF variations, including the version number in them. Lastly, the pdfs get deployed online at the links above, along with this webpage that is updated to match their version number.
+CV DEPLOYMENT NOTE: My CV is in LaTeX code. For every change in the Overleaf LaTeX project, the code gets automatically synced with a GitHub repository. Next, a GitHub Action generates from my code international/regional and short/long PDF variations, including the version date inside them. Lastly, pdfs get deployed online, along with this webpage that is updated to match their last date number.
